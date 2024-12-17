@@ -20,13 +20,50 @@ const Sidebar = () => {
       <h2 className="text-xl font-bold text-gray-700 dark:text-gray-200 mb-6">Navigation</h2>
 
       <ul className="space-y-4">
+        {/* Home Button */}
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-500 font-bold"
+                : "text-gray-600 dark:text-gray-400 hover:underline"
+            }
+          >
+            Home
+          </NavLink>
+        </li>
+
+        {/* Authentication Button */}
+        <li>
+          <NavLink
+            to="/authentication"
+            className={({ isActive }) =>
+              isActive
+                ? "text-blue-500 font-bold"
+                : "text-gray-600 dark:text-gray-400 hover:underline"
+            }
+          >
+            Authentication Connection
+          </NavLink>
+        </li>
+
         {/* TransUnion API Dropdown */}
         <li>
           <button
             onClick={toggleTransUnionDropdown}
             className="w-full text-left text-gray-700 dark:text-gray-200 font-medium hover:text-blue-500"
           >
-            TransUnion API
+           <NavLink
+                  to="/introduction"
+                  className={({ isActive }) =>
+                    isActive
+                      ? "text-blue-500 font-bold"
+                      : "text-gray-600 dark:text-gray-400 hover:underline"
+                  }
+                >
+                   TransUnion API 
+                </NavLink>
           </button>
 
           {/* Dropdown menu for TransUnion */}
@@ -42,18 +79,6 @@ const Sidebar = () => {
                   }
                 >
                   Introduction
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/authentication"
-                  className={({ isActive }) =>
-                    isActive
-                      ? "text-blue-500 font-bold"
-                      : "text-gray-600 dark:text-gray-400 hover:underline"
-                  }
-                >
-                  Authentication Connection
                 </NavLink>
               </li>
 
