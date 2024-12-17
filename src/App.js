@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Introduction } from "./pages/Introduction";
+import { Authentication } from "./pages/Authentication";
+import { OperationApis } from "./pages/OperationApis";
+import { SampleSearchData } from "./pages/SampleSearchData";
+import Sidebar from "./components/Sidebar";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="flex">
+        <Sidebar />
+        <div className="ml-64 flex-1 p-4">
+          <Routes>
+            {/* Define routes for main pages */}
+            <Route path="/" element={<Introduction />} />
+            <Route path="/introduction" element={<Introduction />} />
+            <Route path="/authentication" element={<Authentication />} />
+            <Route path="/sample-search-data" element={<SampleSearchData />} />
+
+            {/* Route for Operation APIs, with dynamic products */}
+            <Route path="/operation-apis" element={<OperationApis />} />
+            <Route path="/operation-apis/:productId" element={<OperationApis />} /> {/* Dynamic product routes */}
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
